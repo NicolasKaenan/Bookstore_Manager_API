@@ -1,6 +1,8 @@
 package com.nicolaskaenan.bookstoreapi.controller;
 
+import com.nicolaskaenan.bookstoreapi.dto.LivroDTO;
 import com.nicolaskaenan.bookstoreapi.service.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +27,7 @@ public class LivroController {
 	}
 
 	@PostMapping
-	public MessageResponseDTO create(@RequestBody Livro livro) {
-		return livroService.create(livro);
+	public MessageResponseDTO create(@RequestBody @Valid LivroDTO livroDTO) {
+		return livroService.create(livroDTO);
 	}
 }
